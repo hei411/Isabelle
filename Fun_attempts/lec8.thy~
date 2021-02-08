@@ -1,0 +1,6 @@
+theory dec41 imports Main begin 
+
+text {*
+  Proving two examples from Logic and Proof lecture 8
+*}
+
