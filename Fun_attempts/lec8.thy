@@ -20,13 +20,30 @@ lemma " \<forall>x.\<exists>y. \<not>(P(y,x) \<longleftrightarrow> \<not>P(y,y))
   done
   
 
-  done
 lemma "(((\<exists>x. P \<longrightarrow> Q x) \<and> ((\<exists>x. Q x \<longrightarrow> P)) \<longrightarrow> ( \<exists>x. (P = Q x)))) " 
   apply(rule impI)
   apply(erule conjE)
   apply(erule exE)+
-  apply blast
+  apply(rule classical)
+  apply (rule exI)
+  apply (rule iffI)
+   apply (erule notE)
+   apply(erule impE)
+    apply assumption
+   apply (rule exI)
+   apply (rule iffI)
+    apply assumption
+  apply assumption
+  apply (erule impE)
+   apply (erule impE)
+    apply assumption
+   apply assumption
+  apply (erule impE)
+   apply assumption+
   done
+  
+
+
   
   
   
