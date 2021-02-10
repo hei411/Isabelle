@@ -22,21 +22,3 @@ next
   then show ?thesis by auto
 qed
 
-text {*
-  Proof by applying rules
-*}
-theorem
-  "\<exists>x. (P x \<longrightarrow> (\<forall>y. P y))"
-  apply (rule classical)
-  apply (rule exI)
-  apply (rule impI)
-  apply (rule allI)
-  apply(rule classical)
-  apply (erule notE)
-  apply (rule exI)
-  apply (rule impI)
-  apply (rule allI)
-  apply(erule notE)
-  apply assumption
-done
-
