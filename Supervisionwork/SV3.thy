@@ -11,10 +11,10 @@ proof
   assume condition:"(\<forall>x. (P(x) \<longleftrightarrow> (Q(x) \<and> \<not>Q(f(x)))))"
   fix a
   from condition have "(P(a) \<longleftrightarrow> (Q(a) \<and> \<not>Q(f(a))))" by simp
-  from condition have conclusion:"\<exists> y . \<not>P(y)"
+  from condition show result:"( \<exists> y . \<not>P(y))"
   proof cases
     assume  "\<not> P(a)"
-    then show ?thesis by auto
+    thus ?thesis by auto
   next 
     assume q:" \<not> \<not> P a"
     from condition have  w: "P a = (Q a \<and> \<not> Q (f a))" by simp
@@ -25,7 +25,7 @@ proof
     from condition t have y:"\<not>P(f(a))" by auto
     then show ?thesis by auto
   qed
-  oops
+qed
   
   
     
